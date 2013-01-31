@@ -43,9 +43,8 @@
 
             // If set to responsive, re-construct after every browser resize
             if ( o.responsive === true ) {
-                // Only need to do this for IE7 and below
-                // or if we set tableDisplay to false
-                if ( (o.tableDisplay != true) || ($.browser.msie && parseInt($.browser.version, 10) <= 7) ) {
+                // Only need to do this if we set tableDisplay to false
+                if ( (o.tableDisplay != true) ) {
                     resizeTrigger( _construct, o.responsiveDelay );
                 }
             }
@@ -94,7 +93,7 @@
             // find and set the appropriate widths for list items
             function _construct() {
 
-                if ( (o.tableDisplay != true) || ($.browser.msie && parseInt($.browser.version, 10) <= 7) ) {
+                if ( (o.tableDisplay != true) ) {
 
                     // IE7 doesn't support the "display: table" method
                     // so we need to do it the hard way.
@@ -123,9 +122,9 @@
                     var li_last_width = trueInnerWidth(li_last) + ( (full_width - ul_width_extra) - trueInnerWidth(ul) );
                     // I hate to do this but for some reason Firefox (v13.0) and IE are always
                     // one pixel off when rendering. So this is a quick fix for that.
-                    if ($.browser.mozilla || $.browser.msie) {
-                        li_last_width = li_last_width - 1;
-                    }
+                    //if ($.browser.mozilla || $.browser.msie) {
+                    //    li_last_width = li_last_width - 1;
+                    //}
                     // Add the leftovers to the last navigation item
                     li_last.css({ 'width' : li_last_width + 'px' });
 
